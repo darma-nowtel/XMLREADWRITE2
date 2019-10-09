@@ -51,14 +51,18 @@ namespace XMLReadWrite
 
                 foreach (XmlNode FaultTrace in DeformationModel.ChildNodes)
                 {
-                    FaultTrace.Attributes["name"].Value = x[0].sectionName;
+                     FaultTrace.RemoveAll();
 
+                    XmlAttribute newAttr = xmlDoc.CreateAttribute("name");
+                    newAttr.Value = x[0].sectionName;
+                    FaultTrace.Attributes.Append(newAttr);
+                        
 
-                    foreach (XmlNode Location in FaultTrace.ChildNodes)
-                    {
-                            //Location.RemoveAll();
-                            FaultTrace.RemoveChild(Location);
-                    }
+                    //foreach (XmlNode Location in FaultTrace.ChildNodes)
+                    //{
+                    //        //Location.RemoveAll();
+                    //        Location.ParentNode.RemoveChild(Location);
+                    //}
 
                         if (x[0].Latitude != "" && x[0].Longitude != "" && x[0].Depth != "")
                         {
