@@ -56,16 +56,20 @@ namespace XMLReadWrite
 
                     foreach (XmlNode Location in FaultTrace.ChildNodes)
                     {
-                        Location.RemoveAll();
+                            //Location.RemoveAll();
+                            FaultTrace.RemoveChild(Location);
                     }
 
+                        if (x[0].Latitude != "" && x[0].Longitude != "" && x[0].Depth != "")
+                        {
+                            XmlElement elem = xmlDoc.CreateElement("Location");
+                            elem.SetAttribute("Latitude", x[0].Latitude);
+                            elem.SetAttribute("Longitude", x[0].Longitude);
+                            elem.SetAttribute("Depth", x[0].Depth);
+                            FaultTrace.AppendChild(elem);
+                        }
 
-                    XmlElement elem = xmlDoc.CreateElement("Location");
-                    elem.SetAttribute("Latitude", x[0].Latitude);
-                    elem.SetAttribute("Longitude", x[0].Longitude);
-                    elem.SetAttribute("Depth", x[0].Depth);
-
-                    FaultTrace.AppendChild(elem);
+                    
 
                     var subElements = findChildElements(faultSectionId.ToString());
                     foreach (Location ltn in subElements.ToList())
