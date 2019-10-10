@@ -129,8 +129,8 @@ namespace XMLReadWrite
                                 aveRake= data[6],
                                 aseismicSlipFactor = data[7],
                                 dipDirection = data[8],
-                                Latitude = data[9] ,
-                                Longitude = data[10],
+                                Latitude = data[10] ,
+                                Longitude = data[9],
                                 Depth = data[11]
 
 
@@ -151,8 +151,8 @@ namespace XMLReadWrite
                                let data = defModelData.Split(',')
                                select new Location()
                                {
-                                   Latitude = data[9],
-                                   Longitude = data[10],
+                                   Latitude = data[10],
+                                   Longitude = data[9],
                                    Depth = data[11]
                                };
 
